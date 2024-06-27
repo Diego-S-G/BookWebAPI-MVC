@@ -29,5 +29,12 @@ namespace BookWeb.MVC.Controllers
         {
             return View(new BookViewModel());
         }
+
+        public IActionResult DeleteBook(int id)
+        {
+            _httpClient.DeleteAsync($"Book/{id}");
+
+            return RedirectToAction("Index");
+        }
     }
 }
