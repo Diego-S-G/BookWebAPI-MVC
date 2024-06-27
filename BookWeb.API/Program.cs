@@ -5,6 +5,7 @@ using BookWeb.Domain.Interfaces;
 using BookWeb.Infrastructure.Datas;
 using BookWeb.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace BookWeb.API
 {
@@ -20,6 +21,9 @@ namespace BookWeb.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddControllersWithViews()
+                .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             builder.Services.AddDbContext<BookDbContext>(options =>
                options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BookWeb.MVC.Models.BookViewModel>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Autor(a)</th>
+            <th>Editora</th>
+            <th><a asp-action="Create" class="btn btn-primary btn-sm"><i class="far fa-plus-square"></i>Adicionar Livro</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Author</td>
+                <td>@item.Publisher</td>
+                <td>
+                    <a class="btn btn-outline-success btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn-outline-danger btn-sm" asp-action="DeleteBook" asp-route-id="@item.Id" onclick="return confirm('Deseja realmente deletar o livro?')" class="text-danger ml-1">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
