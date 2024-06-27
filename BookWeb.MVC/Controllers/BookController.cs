@@ -36,5 +36,19 @@ namespace BookWeb.MVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Edit(BookViewModel book)
+        {
+            _httpClient.PutAsJsonAsync("Book", book);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var book = await _httpClient.GetFromJsonAsync<BookViewModel>($"Book/{id}");
+            return View(book);
+        }
     }
 }

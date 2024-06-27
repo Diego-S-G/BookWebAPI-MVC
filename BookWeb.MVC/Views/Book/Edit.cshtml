@@ -1,0 +1,30 @@
+﻿@model BookWeb.MVC.Models.BookViewModel
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="col-md-6">
+                <label asp-for="Name">Nome do Livro</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Author">Autor(a)</label>
+                <input asp-for="Author" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Publisher">Editora</label>
+                <input asp-for="Publisher" class="form-control" />
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+                <div class="col-md-3">
+                    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
